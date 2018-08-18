@@ -3,36 +3,43 @@ var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var guessesMade = [];
-
+var computerLetter = 0;
 // There is a list of all possible letters to choose from
 var randomLetters = "abcdefghijklmnopqrstuvwxyz".split("");
 console.log(randomLetters);
 //Computer thinks of a random lowercase letter
-var computerLetter = randomLetters[Math.floor(Math.random()*randomLetters.length)];
-console.log(computerLetter);
+var computerLetter = randomLetters[Math.floor(Math.random() * randomLetters.length)];
+console.log("Guess this letter: " + computerLetter);
 //Player inputs a letter to guess what computer is thinking
-document.onkeyup = function(event) {
+document.onkeyup = function (event) {
     var userGuess = event.key;
-    alert("User Guess: " + userGuess);
-//Game checks if that letter matches the computer's letter
-if (userGuess === computerLetter) {
-//If the letter matches, add a win to the Wins total
-    wins++;
-    alert("Total wins: " + wins);
+    console.log("User Guess: " + userGuess);
+    //Game checks if that letter matches the computer's letter
+    if (userGuess === computerLetter) {
+        //If the letter matches, add a win to the Wins total, reset computer letter and guesses.
+        wins++;
+        alert("Total wins: " + wins);
+        guessesLeft = 9;
+        computerLetter = randomLetters[Math.floor(Math.random() * randomLetters.length)];
+        console.log("Guess new letter: " + computerLetter);
+    }
+    //If the letter does not match, deduct from the guesses left total and add the letter to gueses so far
+    else {
+        guessesLeft--;
+        alert("Guesses Left: " + guessesLeft);
+        // Guesses so far should not allow repeat of the same letter
+        if ((guessesMade.indexOf(userGuess) === -1) && (userGuess !== "Enter" && userGuess !== "Shift" && userGuess !=="Backspace")) {
+            guessesMade.push(userGuess);
+            console.log(guessesMade);
+        }
+    }
+    //If guesses left reaches 0, add a loss to the losses total, reset computer letter and guesses.
+    if (guessesLeft <= 0) {
+        losses++;
+        alert("You lose! Total Losses: " + losses);
+        guessesLeft = 9;
+        computerLetter = randomLetters[Math.floor(Math.random() * randomLetters.length)];
+        console.log("Guess new letter: " + computerLetter);
+    }
 }
-//If the letter does not match, deduct from the guesses left total and add the letter to gueses so far
-else {
-    guessesLeft--;
-    guessesMade.push(userGuess);
-    console.log(guessesMade);
-    alert("Guesses Left: " + guessesLeft);
-}
-//If guesses left reaches 0, add a loss to the losses total
-if (guessesLeft <= 0) {
-    losses++;
-    alert("You lose! Total Losses: " + losses);
-}
-}
-// Guesses so far should not allow repeat of the same letter
 
-//If a win or loss occurs, reset the game.
