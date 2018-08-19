@@ -13,34 +13,40 @@ console.log("Guess this letter: " + computerLetter);
 document.onkeyup = function (event) {
     var userGuess = event.key.toLowerCase();
     console.log(userGuess);
-    //Game checks if that letter matches the computer's letter
-    if (userGuess === computerLetter) {
-        //If the letter matches, add a win to the Wins total, reset computer letter and guesses.
-        wins++;
-        document.getElementById("winCount").innerHTML = wins;
-        guessesLeft = 9;
-        guessesMade.length = 0;
-        computerLetter = randomLetters[Math.floor(Math.random() * randomLetters.length)];
-        console.log("Guess new letter: " + computerLetter);
-    }
-    //If the letter does not match, deduct from the guesses left total and add the letter to gueses so far
-    else {
-        guessesLeft--;
-        document.getElementById("attemptsCount").innerHTML = guessesLeft;
-        // Guesses so far should not allow repeat of the same letter, also does not allow non-letter keys
-        if ((guessesMade.indexOf(userGuess) === -1) && (userGuess !== "Enter" && userGuess !== "Shift" && userGuess !=="Backspace" && userGuess !=="Control")) {
-            guessesMade.push(userGuess);
-            document.getElementById("guessLog").innerHTML = guessesMade;
+    //The entire game is wrapped in a conditional statement so it will only run if a letter key is pressed
+    if ((event.keyCode > 64) && (event.keyCode < 91)) {
+        //Game checks if that letter matches the computer's letter
+        if (userGuess === computerLetter) {
+            //If the letter matches, add a win to the Wins total, reset computer letter and guesses.
+            wins++;
+            document.getElementById("winCount").innerHTML = wins;
+            guessesLeft = 9;
+            guessesMade.length = 0;
+            computerLetter = randomLetters[Math.floor(Math.random() * randomLetters.length)];
+            console.log("Guess new letter: " + computerLetter);
+        }
+        //If the letter does not match, deduct from the guesses left total and add the letter to gueses so far
+        else {
+            guessesLeft--;
+            document.getElementById("attemptsCount").innerHTML = guessesLeft;
+            // Guesses so far should not allow repeat of the same letter, also does not allow non-letter keys
+            if (guessesMade.indexOf(userGuess) === -1) {
+                guessesMade.push(userGuess);
+                document.getElementById("guessLog").innerHTML = guessesMade;
+            }
+        }
+        //If guesses left reaches 0, add a loss to the losses total, reset computer letter and guesses.
+        if (guessesLeft <= 0) {
+            losses++;
+            document.getElementById("lossCount").innerHTML = losses;
+            guessesLeft = 9;
+            guessesMade.length = 0;
+            computerLetter = randomLetters[Math.floor(Math.random() * randomLetters.length)];
+            console.log("Guess new letter: " + computerLetter);
         }
     }
-    //If guesses left reaches 0, add a loss to the losses total, reset computer letter and guesses.
-    if (guessesLeft <= 0) {
-        losses++;
-        document.getElementById("lossCount").innerHTML = losses;
-        guessesLeft = 9;
-        guessesMade.length = 0;
-        computerLetter = randomLetters[Math.floor(Math.random() * randomLetters.length)];
-        console.log("Guess new letter: " + computerLetter);
+    //If the player does not press a letter key, the game will not start and the player will be instructed to choose a letter key
+    else {
+        alert("Please press a letter key to play!");
     }
 }
-
