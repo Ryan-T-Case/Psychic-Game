@@ -12,6 +12,7 @@ console.log("Guess this letter: " + computerLetter);
 //Player inputs a letter to guess what computer is thinking
 document.onkeyup = function (event) {
     var userGuess = event.key.toLowerCase();
+    console.log(userGuess);
     //Game checks if that letter matches the computer's letter
     if (userGuess === computerLetter) {
         //If the letter matches, add a win to the Wins total, reset computer letter and guesses.
@@ -27,7 +28,7 @@ document.onkeyup = function (event) {
         guessesLeft--;
         document.getElementById("attemptsCount").innerHTML = guessesLeft;
         // Guesses so far should not allow repeat of the same letter, also does not allow non-letter keys
-        if ((guessesMade.indexOf(userGuess) === -1) && (userGuess !== "Enter" && userGuess !== "Shift" && userGuess !=="Backspace" && userGuess !=="shift")) {
+        if ((guessesMade.indexOf(userGuess) === -1) && (userGuess !== "Enter" && userGuess !== "Shift" && userGuess !=="Backspace" && userGuess !=="Control")) {
             guessesMade.push(userGuess);
             document.getElementById("guessLog").innerHTML = guessesMade;
         }
