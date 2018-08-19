@@ -1,6 +1,6 @@
 # The Psychic Game
 
-##Description
+## Description
 
 * **What is The Psychic Game?**
 The Psychic Game is a simple guessing game created using Javascript.
