@@ -1,18 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>The Psychic Game</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <script src="assets/javascript/game.js"></script>
 </head>
+
 <body>
-    <h1>The Psychic Game</h1>
-        <p>Guess what letter I'm thinking of</p>
-        <p>Wins: <span id="winCount">0</span></p>
-        <p>Losses: <span id="lossCount">0</span></p>
-        <p>Guesses Left: <span id="attemptsCount">9</span></p>
-        <p>Your Guesses So Far: <span id="guessLog"></span></p>
+    <div class="flex-container">
+        <div id="gameBox">
+            <div id="content">
+                <h1>The Psychic Game</h1>
+                <p>Guess what letter I'm thinking of</p>
+                <p>Wins:
+                    <span id="winCount">0</span>
+                </p>
+                <p>Losses:
+                    <span id="lossCount">0</span>
+                </p>
+                <p>Guesses Left:
+                    <span id="attemptsCount">9</span>
+                </p>
+                <p>Your Guesses So Far:
+                    <span id="guessLog"></span>
+                </p>
+                <img src="assets/images/crystal-ball.jpg" id="crystal-ball" alt="Psychic with Crystal Ball">
+            </div>
+        </div>
+    </div>
+    </div>
 </body>
+
 </html>

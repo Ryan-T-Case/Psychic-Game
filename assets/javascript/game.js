@@ -15,6 +15,7 @@ document.onkeyup = function (event) {
     console.log(userGuess);
     //The entire game is wrapped in a conditional statement so it will only run if a letter key is pressed
     if ((event.keyCode > 64) && (event.keyCode < 91)) {
+
         //Game checks if that letter matches the computer's letter
         if (userGuess === computerLetter) {
             //If the letter matches, add a win to the Wins total, reset computer letter and guesses.
@@ -39,6 +40,7 @@ document.onkeyup = function (event) {
         if (guessesLeft <= 0) {
             losses++;
             document.getElementById("lossCount").innerHTML = losses;
+            displayAnswer = true;
             guessesLeft = 9;
             guessesMade.length = 0;
             computerLetter = randomLetters[Math.floor(Math.random() * randomLetters.length)];

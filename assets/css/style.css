@@ -1,0 +1,29 @@
+body {
+    background-image: url(../images/background-image.jpg);
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#gameBox {
+    background-color: rgba(138, 43, 226, 0.4);
+    width: 80%;
+    padding: 0 5% 5% 5%;
+}
+
+#content {
+    color: aqua;
+    font-family: 'Kaushan Script', cursive;
+    text-align: center;
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+#crystal-ball {
+    justify-content: center;
+    width: 75%;
+    border: .25rem solid aqua;
+}
